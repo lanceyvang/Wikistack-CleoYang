@@ -6,7 +6,10 @@ const nunjucks = require('nunjucks');
 const path = require('path');
 const Sequelize = require("sequelize");
 const models = require('./models');
+const routes = require('./routes');
 
+
+app.use('/', routes);
 
 //Nunjucks Boilerplate
 const env = nunjucks.configure('view', {noCache: true});
