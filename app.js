@@ -9,15 +9,17 @@ const models = require('./models');
 const routes = require('./routes');
 
 
-app.use('/', routes);
+
 
 //Nunjucks Boilerplate
-const env = nunjucks.configure('view', {noCache: true});
+const env = nunjucks.configure('views', {noCache: true});
 app.set('view engine', 'html');
 app.engine('html', nunjucks.render);
 
 //Static MiddleWare
 app.use(express.static(path.join(__dirname, "/public")));
+
+app.use("/", routes);
 
 // SYNC
 models.User.sync()
